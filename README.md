@@ -1,14 +1,29 @@
-# On-chain (Solidity Smart Contract)
+# Multi-Sig-Authentication-System
 
-- **You can write a simple contract that:**
 
-1. Maps each main wallet to 3 auth wallets.
-2. Stores approval state per session/operation.
-3. Requires at least 2 approvals from the 3 addresses before marking the main wallet as authenticated.
+## About contract
 
-- **Example flow:**
+- contract `ABI` and `contractAddress` are stored in `frontend/my-app/contracts/`
 
-1. `registerMainWallet`(mainWallet, [w1, w2, w3])
-2. `approve`(mainWallet, operationId) → called by w1/w2/w3.
-3. Contract tracks confirmations.
-4. Once ≥2, emits event Authenticated(mainWallet, operationId).
+## Run locally
+
+```bash
+cd frontend/my-app
+npm install
+npm run dev
+```
+
+
+## Test smart contract
+
+```bash
+# start anvil in one terminal
+cd backend
+anvil
+# In another terminal
+cd backend
+forge install foundry-rs/forge-std 
+forge install openzeppelin/openzeppelin-contracts
+forge build
+forge test
+```
